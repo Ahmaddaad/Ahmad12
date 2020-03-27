@@ -3,6 +3,16 @@ const client = new Discord.Client();
 const prefix = "=";
 
 
+// الرد التلقائي
+
+client.on("message", msg => {
+  if (msg.content === "السلام عليكم") {
+    msg.reply("**و عليكم السلام الرجاء شرح مشكلتك واذا كان عندك صور بيكون افضل**");
+  }
+});
+
+
+// عدد الدعوات
 client.on("message", async message => {
   if (message.content.startsWith(prefix + "inf")) {
     //// وهون الامر طبعا
