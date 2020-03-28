@@ -66,6 +66,12 @@ client.on("message", msg => {
   }
 });
 
+client.on("message", msg => {
+  if (msg.content === "سلام عليكم") {
+    msg.reply("**و عليكم السلام الرجاء شرح مشكلتك واذا كان عندك صور للمشكلة بيكون افضل**");
+  }
+});
+
 client.on("guildMemberAdd", member => {
   let id = member.user.id;
   let m = member.user;
