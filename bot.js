@@ -2,16 +2,7 @@
 const client = new Discord.Client();
 const prefix = "=";
 
-client.on("ready", () => {
-  console.log(`----------------`);
-  console.log(`Osama Khalid`);
-  console.log(`----------------`);
-  console.log(`ON ${client.guilds.size} Servers '     Script By : Osama Khalid  `);
-  console.log(`----------------`);
-  console.log(`Logged in as ${client.user.tag}!`);
-  client.user.setActivity("=help | Premium" ); ///تعديل مهم غير كلمة هيلب وبرميوم اللي بدك اياه مثل اسم سيرفرك
-  client.user.setStatus("idle");
-});
+
 
 client.on("message", message => {
   if (message.content.startsWith("=new")) {
@@ -19,7 +10,7 @@ client.on("message", message => {
       .split(" ")
       .slice(1)
       .join(" ");
-    if (!message.guild.roles.exists("name", "Support Team"))
+    if (!message.guild.roles.exists("name", "Fivem support"))
       return message.channel.send(
 ` لازم تسوي رتبة اسمها \`Support Team\`.`
       );
