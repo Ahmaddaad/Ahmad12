@@ -12,7 +12,7 @@ client.on("message", message => {
       .join(" ");
     if (!message.guild.roles.exists("name", "Fivem support"))
       return message.channel.send(
-` لازم تسوي رتبة اسمها \`Support Team\`.`
+` لازم تسوي رتبة اسمها \`Fivem support\`.`
       );
     if (
       message.guild.channels.exists(
@@ -24,7 +24,7 @@ client.on("message", message => {
     message.guild
       .createChannel(`ticket-${message.author.username}`, "text")
       .then(c => {
-        let role = message.guild.roles.find("name", "Support Team");
+        let role = message.guild.roles.find("name", "Fivem support");
         let role2 = message.guild.roles.find("name", "@everyone");
         c.overwritePermissions(role, {
           SEND_MESSAGES: true,
