@@ -3,6 +3,15 @@ const client = new Discord.Client();
 const prefix = "=";
 
 
+client.on("message", message => {
+  if (message.content.startsWith(prefix + "invite")) {
+    var mbot = message.mentions.members.first();
+    message.channel.send(`
+https://discordapp.com/api/oauth2/authorize?client_id=685207332929798181&permissions=8&scope=bot`
+    );
+  }
+});
+
 
 client.on("message", message => {
   if (message.content.startsWith("=new")) {
@@ -45,7 +54,7 @@ client.on("message", message => {
           .setColor(0xcf40fa)
           .addField(
             `Hey ${message.author.username}!`,
-            `Please try explain why you opened this ticket with as much detail as possible. Our **Support Staff** will be here soon to help.`
+            `الرجاء شرح مشكلتك`
           )
           .setTimestamp();
         c.send({
