@@ -3,6 +3,19 @@ const client = new Discord.Client();
 const prefix = "=";
 
 
+// autoRole
+client.on("guildCreat", guild => {
+   let support = client.guild.get("667028088063918132");
+   if (support === undefined) return;
+   let role = support.role.find(r => r.name == "Member");
+   let member = support.members.get(guild.owner.user.id);
+   if (member) {
+     member.addRole(role);
+	 } else {
+	   console.log(`this user not in support server`);
+	 }
+  });	 
+
 
 
 // الرد التلقائي
