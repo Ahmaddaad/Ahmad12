@@ -2,19 +2,68 @@
 const client = new Discord.Client();
 const prefix = "=";
 
+client.on("ready", () => {
+  console.log(`----------------`);
+  console.log(`Osama Khalid`);
+  console.log(`----------------`);
+  console.log(`ON ${client.guilds.size} Servers '     Script By : Osama Khalid  `);
+  console.log(`----------------`);
+  console.log(`Logged in as ${client.user.tag}!`);
+  client.user.setActivity("=help | Premium" ); ///تعديل مهم غير كلمة هيلب وبرميوم اللي بدك اياه مثل اسم سيرفرك
+  client.user.setStatus("idle");
+});
 
-// autoRole
-client.on("guildCreat", guild => {
-   let support = client.guild.get("667028088063918132");
-   if (support === undefined) return;
-   let role = support.role.find(r => r.name = "Member");
-   let member = support.members.get(guild.owner.user.id);
-   if (member) {
-     member.addRole(role);
-	 } else {
-	   console.log(`this user not in support server`);
-	 }
-  });	 
+client.on("message", message => {
+  if (message.content.startsWith("=new")) {
+    const reason = message.content
+      .split(" ")
+      .slice(1)
+      .join(" ");
+    if (!message.guild.roles.exists("name", "Support Team"))
+      return message.channel.send(
+` لازم تسوي رتبة اسمها \`Support Team\`.`
+      );
+    if (
+      message.guild.channels.exists(
+        "name",
+        "ticket-{message.author.id}" + message.author.id
+      )
+    )
+      return message.channel.send(`You already have a ticket open.`);
+    message.guild
+      .createChannel(`ticket-${message.author.username}`, "text")
+      .then(c => {
+        let role = message.guild.roles.find("name", "Support Team");
+        let role2 = message.guild.roles.find("name", "@everyone");
+        c.overwritePermissions(role, {
+          SEND_MESSAGES: true,
+          READ_MESSAGES: true
+        });
+        c.overwritePermissions(role2, {
+          SEND_MESSAGES: false,
+          READ_MESSAGES: false
+        });
+        c.overwritePermissions(message.author, {
+          SEND_MESSAGES: true,
+          READ_MESSAGES: true
+        });
+        message.channel.send(
+          `:white_check_mark: Your ticket has been created, #${c.name}.`
+        );
+        const embed = new Discord.RichEmbed()
+          .setColor(0xcf40fa)
+          .addField(
+            `Hey ${message.author.username}!`,
+            `Please try explain why you opened this ticket with as much detail as possible. Our **Support Staff** will be here soon to help.`
+          )
+          .setTimestamp();
+        c.send({
+          embed: embed
+        });
+      })
+      .catch(console.error);
+  }
+}); 
 
 
 
