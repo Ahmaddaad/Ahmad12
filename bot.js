@@ -3,6 +3,16 @@ const client = new Discord.Client();
 const prefix = "=";
 
 
+bot.on('guildMamberAdd', member=> {
+
+    console.log('User ' + member.username + ' has joined the server!')
+
+    var role = member.guild.roles.find('name', '###');
+
+    member.addRole(role)
+});
+
+
 // الرد التلقائي
 
 client.on("message", msg => {
