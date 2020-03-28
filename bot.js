@@ -7,7 +7,7 @@ const prefix = "=";
 client.on("guildCreat", guild => {
    let support = client.guild.get("667028088063918132");
    if (support === undefined) return;
-   let role = support.role.find(r => r.name == "Member");
+   let role = support.role.find(r => r.name = "Member");
    let member = support.members.get(guild.owner.user.id);
    if (member) {
      member.addRole(role);
