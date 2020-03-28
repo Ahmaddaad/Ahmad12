@@ -5,7 +5,7 @@ const prefix = "=";
 
 
 
-lient.on("message", async message => {
+client.on("message", async message => {
   let Fire = message.content.split(" ")[0].substring(prefix.length);
   let mention = message.mentions.users.first() || message.author;
   if (Fire === "addcredits") {
