@@ -3,16 +3,8 @@ const client = new Discord.Client();
 const prefix = "=";
 
 
-client.on("message", message => {
-  if (message.content.startsWith(prefix + "invite")) {
-    var mbot = message.mentions.members.first();
-    message.channel.send(`
-https://discordapp.com/api/oauth2/authorize?client_id=685207332929798181&permissions=8&scope=bot`
-    );
-  }
-});
 
-
+//ticket
 client.on("message", message => {
   if (message.content.startsWith("=new")) {
     const reason = message.content
