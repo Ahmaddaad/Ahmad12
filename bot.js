@@ -6,7 +6,7 @@ const prefix = "=";
 //bot user information
 client.on("message", pixelbot => {
   // itzZa1D - Codes Team.
-  if (pixelbot.content.startsWith(prefix + "user")) {
+  if (pixelbot.content.startsWith("=user")) {
     // itzZa1D - Codes Team.
     if (pixelbot.author.bot) return;
     if (!pixelbot.guild)
