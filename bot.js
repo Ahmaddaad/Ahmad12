@@ -402,6 +402,79 @@ client.on("message", message => {
   }
 });
 
+client.on("message", message => {
+  if (message.content === prefix + "creatcolores") {
+    if (!message.channel.guild)
+      return message.channel.send("**This Commnad only For Servers !**");
+
+    if (!message.member.hasPermission("ADMINISTRATOR"))
+      return message.channel
+        .send("**You Dont Have** `ADMINISTRATOR` **premission**")
+        .then(msg => msg.delete(6000));
+    message.guild.createRole({
+      name: "Black",
+      color: "#000000",
+      permissions: []
+    });
+    message.guild.createRole({
+      name: "D-Red",
+      color: "#e64d62",
+      permissions: []
+    });
+    message.guild.createRole({
+      name: "Yellow",
+      color: "#ffea35",
+      permissions: []
+    });
+    message.guild.createRole({
+      name: "D-Green",
+      color: "#bce86d",
+      permissions: []
+    });
+    message.guild.createRole({
+      name: "Aqua",
+      color: "#5dafdf",
+      permissions: []
+    });
+    message.guild.createRole({
+      name: "Green",
+      color: "#70ca70",
+      permissions: []
+    });
+    message.guild.createRole({
+      name: "Brown",
+      color: "#9a5746",
+      permissions: []
+    });
+    message.guild.createRole({
+      name: "Red",
+      color: "#ff0025",
+      permissions: []
+    });
+    message.guild.createRole({
+      name: "Purple",
+      color: "#aa8fd6",
+      permissions: []
+    });
+    message.guild.createRole({
+      name: "White",
+      color: "#f9f9f9",
+      permissions: []
+    });
+    message.guild.createRole({
+      name: "Orange",
+      color: "#ffcc4d",
+      permissions: []
+    });
+
+    message.channel.sendMessage({
+      embed: new Discord.RichEmbed()
+        .setColor("#502faf")
+        .setAuthor(`${message.author.username}'`, message.author.avatarURL)
+        .setDescription("``الالوان قيد الانشاء ....``")
+    });
+  }
+});
 //color
 
 
