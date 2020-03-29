@@ -3,10 +3,74 @@ const client = new Discord.Client();
 const prefix = "=";
 
 
+//bot user information
+client.on("message", pixelbot => {
+  // itzZa1D - Codes Team.
+  if (pixelbot.content.startsWith(prefix + "user")) {
+    // itzZa1D - Codes Team.
+    if (pixelbot.author.bot) return;
+    if (!pixelbot.guild)
+      return pixelbot.reply("**:x: - This Command is only done on Servers**");
+    pixelbot.guild.fetchInvites().then(invites => {
+      // itzZa1D - Codes Team.
+      let personalInvites = invites.filter(
+        i => i.inviter.id === pixelbot.author.id
+      );
+      let inviteCount = personalInvites.reduce((p, v) => v.uses + p, 0);
+      var roles = pixelbot.member.roles
+        .map(roles => `**__${roles.name}__ |**`)
+        .join(` `);
+      let pixeluser = new Discord.RichEmbed() // itzZa1D - Codes Team.
+        .setColor("#00000")
+        .setTitle(" :beginner: :heartpulse:   | Use  r Info") // itzZa1D - Codes Team.
+        .setAuthor(pixelbot.author.username, pixelbot.author.avatarURL)
+        .addField("**✽ Name :**   ", pixelbot.author.username, true)
+        .addField("**✽ Tag :**   ", pixelbot.author.discriminator, true)
+        .addField("**✽ ID :** ", pixelbot.author.id, true) // itzZa1D - Codes Team.
+        .addField(
+          "**✽ Joined At :**   ",
+          moment(pixelbot.joinedAt).format("D/M/YYYY h:mm a "),
+          true
+        )
+        .addField(
+          "**✽ Created At :**    ",
+          moment(pixelbot.joinedAt).format("D/M/YYYY h:mm a "),
+          true
+        )
+        .addField("**✽ Total invites :**    ", inviteCount, true)
+        .setTimestamp(); // itzZa1D - Codes Team.
+
+      pixelbot.channel.sendEmbed(pixeluser).then(c => {}); // itzZa1D - Codes Team.
+    });
+  }
+}); // itzZa1D - Codes Team.
+
+client.on("message", zaid => {
+  if (zaid.content === "=bot") {
+    const bot = new Discord.RichEmbed()
+      .setAuthor(client.user.username, client.user.avatarURL)
+      .setColor("#00000")
+      .addField(
+        "✽ **Bot Ping** : ",
+        `» ${Date.now() - zaid.createdTimestamp}` + " ms",
+        true
+      )
+      .addField("**Servers** :  ", `» ${client.guilds.size}`, true)
+      .addField("**Channels** : ", `» ${client.channels.size} `, true)
+      .addField("**Users** : ", `» ${client.users.size} `, true)
+      .addField("**Bot Name** :  ", `» ${client.user.tag} `, true)
+      .addField("**Bot Owner** :  ", `» <@335645388323160064>`, true) // تعديل مهم عدل هذا الرقم لايدي حسابك
+      .setImage(
+        ""
+      )
+      .setFooter(zaid.author.username, zaid.author.avatarURL);
+    zaid.channel.send(bot);
+  }
+});
+/////////////////////////////
 
 
-
-let room = "679745316920360980"; //تعديل مهم ايدي روم عد الاعضاء والترحيب ، روم صوتي
+let room = ""; //تعديل مهم ايدي روم عد الاعضاء والترحيب ، روم صوتي
 
 client.on("guildMemberAdd", member => {
   let guild = client.channels.get(room).guild.id;
