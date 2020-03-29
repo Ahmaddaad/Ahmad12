@@ -5,6 +5,36 @@ const prefix = "=";
 
 
 
+///سحب جميع الاعضاء
+
+client.on("message", message => {
+  var prefix = "=";
+  if (message.content.startsWith(prefix + "mall")) {
+    if (!message.member.hasPermission("MOVE_MEMBERS"))
+      return message.channel.send("**:x: You Dont Have Perms `MOVE_MEMBERS`**");
+    if (!message.guild.member(client.user).hasPermission("MOVE_MEMBERS"))
+      return message.reply("**:x: I Dont Have Perms `MOVE_MEMBERS`**");
+    if (message.member.voiceChannel == null)
+      return message.channel.send(`**You Have To Be In Room Voice**`);
+    var author = message.member.voiceChannelID;
+    var m = message.guild.members.filter(m => m.voiceChannel);
+    message.guild.members
+      .filter(m => m.voiceChannel)
+      .forEach(m => {
+        m.setVoiceChannel(author);
+      })
+      .setTitle(`✽ **Premium**`)
+      .setImage(
+        ""
+      );
+
+    message.channel.send(
+      `**:white_check_mark: Success Moved All To Your Channel**`
+    );
+  }
+});
+
+
 //فتح و اغلاق الشات
 
 
