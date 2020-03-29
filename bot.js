@@ -4,46 +4,7 @@ const prefix = "=";
 
 
 //bot user information
-client.on("message", pixelbot => {
-  // itzZa1D - Codes Team.
-  if (pixelbot.content.startsWith("=user")) {
-    // itzZa1D - Codes Team.
-    if (pixelbot.author.bot) return;
-    if (!pixelbot.guild)
-      return pixelbot.reply("**:x: - This Command is only done on Servers**");
-    pixelbot.guild.fetchInvites().then(invites => {
-      // itzZa1D - Codes Team.
-      let personalInvites = invites.filter(
-        i => i.inviter.id === pixelbot.author.id
-      );
-      let inviteCount = personalInvites.reduce((p, v) => v.uses + p, 0);
-      var roles = pixelbot.member.roles
-        .map(roles => `**__${roles.name}__ |**`)
-        .join(` `);
-      let pixeluser = new Discord.RichEmbed() // itzZa1D - Codes Team.
-        .setColor("#00000")
-        .setTitle(" :beginner: :heartpulse:   | Use  r Info") // itzZa1D - Codes Team.
-        .setAuthor(pixelbot.author.username, pixelbot.author.avatarURL)
-        .addField("**✽ Name :**   ", pixelbot.author.username, true)
-        .addField("**✽ Tag :**   ", pixelbot.author.discriminator, true)
-        .addField("**✽ ID :** ", pixelbot.author.id, true) // itzZa1D - Codes Team.
-        .addField(
-          "**✽ Joined At :**   ",
-          moment(pixelbot.joinedAt).format("D/M/YYYY h:mm a "),
-          true
-        )
-        .addField(
-          "**✽ Created At :**    ",
-          moment(pixelbot.joinedAt).format("D/M/YYYY h:mm a "),
-          true
-        )
-        .addField("**✽ Total invites :**    ", inviteCount, true)
-        .setTimestamp(); // itzZa1D - Codes Team.
 
-      pixelbot.channel.sendEmbed(pixeluser).then(c => {}); // itzZa1D - Codes Team.
-    });
-  }
-}); // itzZa1D - Codes Team.
 
 client.on("message", zaid => {
   if (zaid.content === "=bot") {
@@ -59,7 +20,7 @@ client.on("message", zaid => {
       .addField("**Channels** : ", `» ${client.channels.size} `, true)
       .addField("**Users** : ", `» ${client.users.size} `, true)
       .addField("**Bot Name** :  ", `» ${client.user.tag} `, true)
-      .addField("**Bot Owner** :  ", `» <@335645388323160064>`, true) // تعديل مهم عدل هذا الرقم لايدي حسابك
+      .addField("**Bot Owner** :  ", `» <@403543115694080010>`, true) // تعديل مهم عدل هذا الرقم لايدي حسابك
       .setImage(
         ""
       )
