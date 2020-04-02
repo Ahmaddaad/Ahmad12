@@ -3,6 +3,29 @@ const client = new Discord.Client();
 const prefix = "=";
 
 
+
+client.on("guildMemberAdd", member => {
+  let id = member.user.id;
+  let m = member.user;
+  var embed = new Discord.RichEmbed()
+    .setThumbnail(m.avatarURL)
+    .setImage(
+      ""
+    )
+    .addField(
+      `<a:NW:620727189528117258><a:NE:620727187196215306><a:NL:620727189272526876><a:NC:620727189184446501><a:NO:620727189205155840><a:NM:620727189154955265><a:NE:620727187196215306>`,
+      `<@${id}>`
+    )
+    .addField(" **__Welcome To Server__**", `**${member.guild.name}**`)
+    .addField("**انت العضو رقم** ", `${member.guild.memberCount} `)
+    .setColor("RANDOM");
+  var channel = member.guild.channels.find("name", "الترحيب-💫"); //تعديل مهم اسم روم الولكم
+  if (!channel) return;
+  channel.send({ embed: embed });
+});
+
+
+
 //bot user information
 
 
@@ -31,39 +54,6 @@ client.on("message", zaid => {
 /////////////////////////////
 
 
-let room = ""; //تعديل مهم ايدي روم عد الاعضاء والترحيب ، روم صوتي
-
-client.on("guildMemberAdd", member => {
-  let guild = client.channels.get(room).guild.id;
-
-  if (member.guild.id != guild) return;
-  client.channels
-    .get(room)
-    .setName("Welcome " + member.user.username)
-    .then(m => {
-      setTimeout(() => {
-        client.channels
-          .get(room)
-          .setName(member.guild.name + " - " + member.guild.members.size);
-      }, 3000);
-    });
-});
-
-client.on("guildMemberRemove", member => {
-  let guild = client.channels.get(room).guild.id;
-
-  if (member.guild.id != guild) return;
-  client.channels
-    .get(room)
-    .setName("Member Left :(")
-    .then(m => {
-      setTimeout(() => {
-        client.channels
-          .get(room)
-          .setName(member.guild.name + " - " + member.guild.members.size);
-      }, 3000);
-    });
-});
 
 client.on("voiceStateUpdate", (oldMember, newMember) => {
   let guild = client.channels.get(room).guild.id;
