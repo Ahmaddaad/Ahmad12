@@ -3,7 +3,38 @@ const client = new Discord.Client();
 const prefix = "=";
 
 
+client.on("message", message => {
+  if (!message.channel.guild) return;
+  if (message.content.startsWith(prefix + "1color")) {
+    if (!message.channel.guild)
+      return message.channel
+        .send("**هذا الأمر فقط للسيرفرات**")
+        .then(m => m.delete(5000));
+    message.channel.sendFile(`https://i.imgur.com/dZbFIob.png`).then(msg => {
+      msg.react("🖤").then(r => {
+                              let activeFilter = (reaction, user) =>
+                                reaction.emoji.name === "🖤" &&
+                                user.id === message.author.id;
 
+                              let active = msg.createReactionCollector(
+                                activeFilter,
+                                { time: 15000 }
+                              );
+
+                              //red
+                              active.on("collect", r => {
+                                message.member.addRole(
+                                  message.guild.roles.find("name", "seller")
+                                );
+
+                                const embed = new Discord.RichEmbed()
+                                  .setColor("#000000")
+
+                                  .setDescription(
+                                    "**:art:تم اعطائك اللون الأسود**"
+                                  )	  
+		  
+});						  
 
 
 
