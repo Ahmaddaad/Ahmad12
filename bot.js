@@ -940,9 +940,9 @@ client.on("message", message => {
 
 // الرد التلقائي
 
-client.on("message", msg => {
+//client.on("message", msg => {
   if (msg.content === "") {
-    msg.reply("**و عليكم السلام الرجاء شرح مشكلتك واذا كان عندك صور للمشكلة بيكون افضل**");
+    msg.reply("**,**");
   }
 });
 
