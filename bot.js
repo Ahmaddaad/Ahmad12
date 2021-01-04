@@ -1038,7 +1038,7 @@ client.on('ready', () => {
       console.log(`ON ${client.guilds.size} Servers '     Brodcast Bot ' `);
     console.log(`----------------`);
   console.log(`Logged in as ${client.user.tag}!`);
-client.user.setGame(`Horizen`,"https://www.twitch.tv/sammour")
+client.user.setGame(`Bloody Race`,"https://www.twitch.tv/sammour")
 client.user.setStatus("dnd")
 });
 
