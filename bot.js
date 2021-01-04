@@ -948,7 +948,7 @@ client.on("message", message => {
 
 
 // الترحيب
-client.on("guildMemberAdd", member => {
+//client.on("guildMemberAdd", member => {
   let id = member.user.id;
   let m = member.user;
   var embed = new Discord.RichEmbed()
